@@ -1,11 +1,12 @@
-# Makefile for cpp01/ex00
+# Makefile for cpp01/ex01
 
 # Program name
-NAME := megaphone
+NAME := phonebook
 
 # Directory paths
 SRC_DIR := src
 OBJ_DIR := obj
+INCLUDE_DIR := include
 
 # Exclude files (relative to $(SRC_DIR))
 # Use EXCLUDE_DIRS for directories to exclude (e.g., dir1 dir2)
@@ -24,7 +25,14 @@ OBJS := $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 # Compiler settings
 CC := g++
-CFLAGS := -Wall -Werror -Wextra -std=c++98 $(if $(NOWARN), -w)
+CFLAGS := -MMD -MP -Wall -Werror -Wextra -std=c++98 $(if $(NOWARN), -w)
+
+# Include directories to search for header files
+IDIRS := $(addprefix -I, $(shell find $(INCLUDE_DIR)/ -type d))
+
+# Linker flags and libraries
+LDFLAGS :=
+LDLIBS :=
 
 # Default target
 all: $(NAME)
@@ -36,7 +44,7 @@ $(NAME): $(OBJS)
 # Pattern rule to compile source files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(IDIRS) $(LDFLAGS) -c $< $(LDLIBS) -o $@
 
 # Remove object directory
 clean:
@@ -51,3 +59,6 @@ re: fclean all
 
 # Phony targets
 .PHONY: all clean fclean re
+
+# Include dependency files
+-include $(OBJS:.o=.d)
