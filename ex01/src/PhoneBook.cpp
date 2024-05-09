@@ -16,7 +16,7 @@ void PhoneBook::addContact()
 {
 	Contact newContact(true);
 
-	contacts[numOfContacts] = newContact;
+	contacts[numOfContacts % 8] = newContact;
 	numOfContacts++;
 }
 
