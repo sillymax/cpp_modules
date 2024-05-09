@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ychng <ychng@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/09 01:37:32 by ychng             #+#    #+#             */
-/*   Updated: 2024/05/09 04:14:51 by ychng            ###   ########.fr       */
+/*   Created: 2024/05/09 01:36:50 by ychng             #+#    #+#             */
+/*   Updated: 2024/05/10 00:07:34 by ychng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,18 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>
-# include <limits>
+# include <iomanip>
+# include "Contact.hpp"
 
 class PhoneBook
 {
 public:
-	explicit PhoneBook();
-	void setFirstName();
-	void setLastName();
-	void setNickName();
-	void setPhoneNumber();
-	void setDarkestSecret();
+	PhoneBook();
+	void addContact();
+	void searchContact() const;
 private:
-	std::string firstName;
-	std::string lastName;
-	std::string nickName;
-	std::string phoneNumber;
-	std::string darkestSecret;	
-	bool containsNumbers(const std::string& str) const;
-	void setName(std::string& name, const std::string& prompt);
-	bool isValidPhoneNumber() const;
+	Contact contacts[8];
+	short	numOfContacts;
 };
 
 #endif // PHONEBOOK_HPP
