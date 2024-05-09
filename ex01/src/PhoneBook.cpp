@@ -20,28 +20,41 @@ void PhoneBook::addContact()
 	numOfContacts++;
 }
 
-std::string PhoneBook::truncateWithPeriod(const std::string& str, int width)
+std::string PhoneBook::truncateText(const std::string& text, size_t width) const
 {
-	std::string truncatedStr;
-
-	if (str.length() > 10)	
-	{
-		truncatedStr = str.substr(0, width - 1);
-		truncatedStr += '.';
-	}
-	else
-		truncatedStr = str;
-	return (truncatedStr);
+	return ((text.length() > 10) ? text.substr(0, width - 1) + '.' : text);
 }
 
+void PhoneBook::printTruncatedText(const std::string& text, size_t width) const
+{
+	std::string truncatedText = truncateText(text, width);
+	std::cout << '|' << std::setw(width) << truncatedText;
+}
+
+void PhoneBook::printContacts() const
+{
+	size_t width = 10;
+
+	std::cout << std::setw(10) << "Index";
+	printTruncatedText("Fist Name", width);
+	printTruncatedText("Last Name", width);
+	printTruncatedText("Nickname", width);
+	std::cout << "\n";
+
+	for (short i = 0; i < numOfContacts; i++)
+	{
+		std::cout << std::setw(10) << i;
+		printTruncatedText(contacts[i].getFirstName(), width);
+		printTruncatedText(contacts[i].getLastName(), width);
+		printTruncatedText(contacts[i].getNickName(), width);
+		std::cout << "\n";
+	}
+}
 
 // Control the output format
 void PhoneBook::searchContact() const
 {
-	std::cout << std::setw(10) << "Index" << "|"
-			  << std::setw(10) << "First Name" << "|"
-			  << std::setw(10) << "Last Name" << "|"
-			  << std::setw(10) << "Nickname" << "\n";
+	printContacts();
 }
 
 PhoneBook::PhoneBook()
