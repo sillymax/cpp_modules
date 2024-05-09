@@ -6,7 +6,7 @@
 /*   By: ychng <ychng@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 01:19:25 by ychng             #+#    #+#             */
-/*   Updated: 2024/05/09 23:38:00 by ychng            ###   ########.fr       */
+/*   Updated: 2024/05/10 01:42:46 by ychng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,15 @@ int main(void)
 
 	do
 	{
-		std::cout << "Enter: ";
+		std::cout << "Enter (ADD, SEARCH, EXIT): ";
 		std::getline(std::cin, choice);
 		if (choice == "ADD")
 			phonebook.addContact();
 		else if (choice == "SEARCH")
 			phonebook.searchContact();
+		else
+			std::cout << "Idiot! >:(\n";
 		
 	} while (choice != "EXIT");
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ychng <ychng@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 01:37:32 by ychng             #+#    #+#             */
-/*   Updated: 2024/05/10 00:49:34 by ychng            ###   ########.fr       */
+/*   Updated: 2024/05/10 01:19:20 by ychng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ public:
 	std::string getFirstName() const;
 	std::string getLastName() const;
 	std::string getNickName() const;
+	std::string getPhoneNumber() const;
+	std::string getDarkestSecret() const;
 private:
 	std::string firstName;
 	std::string lastName;

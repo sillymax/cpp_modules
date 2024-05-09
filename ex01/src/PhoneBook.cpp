@@ -51,10 +51,41 @@ void PhoneBook::printContacts() const
 	}
 }
 
+void PhoneBook::displayContactEntry() const
+{
+	short index;
+
+	while (true)
+	{ 
+		std::cout << "Enter the index of the entry to display (or -1 to exit): ";
+		std::cin >> index;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		if (std::cin.fail())
+		{
+			std::cout << "Only numbers! Please try again.\n";
+			std::cin.clear();
+			continue ;
+		}
+		if (index == -1)
+			break ;
+		if (index < numOfContacts && index >= 0)	
+		{
+			std::cout << "First Name: " << contacts[index].getFirstName() << "\n"
+					<< "Last Name: " << contacts[index].getLastName() << "\n"
+					<< "Nickname: " << contacts[index].getNickName() << "\n"
+					<< "Phone Number: " << contacts[index].getPhoneNumber() << "\n"
+					<< "Darkest Secret: " << contacts[index].getDarkestSecret() << "\n";
+		}
+		else
+			std::cout << "Look carefully, you'll figured it out. Please try again.\n";
+	}
+}
+
 // Control the output format
 void PhoneBook::searchContact() const
 {
 	printContacts();
+	displayContactEntry();
 }
 
 PhoneBook::PhoneBook()
