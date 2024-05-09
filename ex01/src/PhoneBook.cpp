@@ -14,10 +14,12 @@
 
 void PhoneBook::addContact()
 {
+	short	maxContacts = 8;
 	Contact newContact(true);
 
-	contacts[numOfContacts % 8] = newContact;
-	numOfContacts++;
+	contacts[numOfContacts % maxContacts] = newContact;
+	if (numOfContacts < maxContacts)
+		numOfContacts++;
 }
 
 std::string PhoneBook::truncateText(const std::string& text, size_t width) const
