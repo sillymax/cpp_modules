@@ -6,7 +6,7 @@
 /*   By: ychng <ychng@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:43:25 by ychng             #+#    #+#             */
-/*   Updated: 2024/05/10 01:20:05 by ychng            ###   ########.fr       */
+/*   Updated: 2024/05/10 01:57:51 by ychng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void Contact::setName(std::string& name, const std::string& prompt)
 	{
 		std::cout << prompt;
 		std::getline(std::cin, name);
+		if (std::cin.eof())
+		{
+			std::cout << "Why did you EOF? :<\n";
+			exit(0);
+		}
 		if (name.empty())	
 			std::cout << "Do you not have a name? Please try again.\n";
 		else if (containsNumbers(name))	
@@ -76,6 +81,11 @@ void Contact::setPhoneNumber(void)
 	{
 		std::cout << "Enter phone number (10 digits): ";
 		std::getline(std::cin, phoneNumber);
+		if (std::cin.eof())
+		{
+			std::cout << "Why did you EOF? :<\n";
+			exit(0);
+		}
 		if (isValidPhoneNumber())
 			break ;
 	}
@@ -87,6 +97,11 @@ void Contact::setDarkestSecret(void)
 	{ 
 		std::cout << "Enter darkest secret: ";
 		std::getline(std::cin, darkestSecret);
+		if (std::cin.eof())
+		{
+			std::cout << "Why did you EOF? :<\n";
+			exit(0);
+		}
 		if (darkestSecret.empty())
 			std::cout << "Liar, you definitely have one! Please try again.\n";
 		else

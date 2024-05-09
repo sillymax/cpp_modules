@@ -59,6 +59,11 @@ void PhoneBook::displayContactEntry() const
 	{ 
 		std::cout << "Enter the index of the entry to display (or -1 to exit): ";
 		std::cin >> index;
+		if (std::cin.eof())
+		{
+			std::cout << "Why did you EOF? :<\n";
+			exit(0);
+		} 
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		if (std::cin.fail())
 		{

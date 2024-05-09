@@ -6,7 +6,7 @@
 /*   By: ychng <ychng@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 01:37:32 by ychng             #+#    #+#             */
-/*   Updated: 2024/05/10 01:19:20 by ychng            ###   ########.fr       */
+/*   Updated: 2024/05/10 01:58:08 by ychng            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <limits>
+# include <cstdlib>
 
 class Contact
 {
